@@ -21,9 +21,17 @@ class UsersController < ApplicationController
   # GET /users/:id
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present? 
+      @q = @user.microposts.ransack(microposts_search_params)
+      @microposts = @q.result.paginate(page: params[:page])
+    else
+      @q = Micropost.none.ransack
+      @microposts = @user.microposts.paginate(page: params[:page])
+    end
+    @url = user_path(@user)
     # => app/views/users/show.html.erb
     # debugger
-    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # GET /users/new
