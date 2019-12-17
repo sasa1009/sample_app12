@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+    
+    # マイクロポスト検索用のストロングパラメーター
+    def microposts_search_params
+      params.require(:q).permit(:content_cont)
+    end
 end
