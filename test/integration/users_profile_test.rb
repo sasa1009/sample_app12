@@ -32,7 +32,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     get root_path, params: {q: {content_cont: "a"}}
     q = @user.feed.ransack(content_cont: "a")
     q.result.paginate(page:1).each do |micropost|
-      assert_match micropost.content, response.body
+      assert_match CGI.escapeHTML(micropost.content), response.body
     end
   end
 end
