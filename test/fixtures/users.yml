@@ -5,6 +5,7 @@ michael:
   admin: true
   activated: true
   activated_at: <%= Time.zone.now %>
+  follow_notification: true
 
 archer:
   name: Sterling Archer
@@ -12,6 +13,7 @@ archer:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  follow_notification: true
 
 lana:
   name: Lana Kane
@@ -19,6 +21,8 @@ lana:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  follow_notification: false
+  
 
 malory:
   name: Malory Archer
@@ -26,7 +30,16 @@ malory:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  follow_notification: false
 
+yuka:
+  name: Yuka Ohishi
+  email: yuka@example.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  follow_notification: false
+  
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
@@ -34,4 +47,5 @@ user_<%= n %>:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  follow_notification: false
 <% end %>

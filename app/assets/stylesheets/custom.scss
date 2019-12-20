@@ -231,10 +231,12 @@ input {
   }
 }
 
-#session_remember_me {
+#session_remember_me, #user_follow_notification {
   width: auto;
   margin-left: 0;
 }
+
+
 
 
 /* Users index */
@@ -312,3 +314,5 @@ span.picture {
     border: 0;
   }
 }
+
+/* */
